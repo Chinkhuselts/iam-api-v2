@@ -1,0 +1,21 @@
+# Terraform
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.backup
+**/.terraform.lock.hcl
+
+__pychache__/
+*.py[cod]
+*$py.class
+
+.env
+venv/
+env/
+
+postgres_data/
+caddy_data/
+caddy_config/
+*.db
+*.sqlite3
+.DS_Store
+Thumbs.db

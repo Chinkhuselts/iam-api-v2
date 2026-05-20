@@ -1,0 +1,46 @@
+services:
+  # 1. The Bouncer (Handles HTTPS)
+  caddy:
+    image: caddy:2.7
+    restart: unless-stopped
+    ports:
+      - "80:80"     # Required for Let's Encrypt validation
+      - "443:443"   # The secure HTTPS port
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile  # Mount your config file
+      - caddy_data:/data                  # Persist the SSL certificates
+      - caddy_config:/config
+    depends_on:
+      - api
+
+  # 2. Your Application (Now Hidden!)
+  api:
+    image: chacker42/iam-api-v2:latest
+    restart: unless-stopped
+    # ❌ WE REMOVED THE PORTS BLOCK! 
+    # It is no longer accessible via 13.53.102.22:8000
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/iam_db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=iam_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d iam_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  caddy_data:     # Crucial: Don't lose your SSL certs if the container restarts
+  caddy_config:
