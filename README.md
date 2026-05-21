@@ -29,7 +29,8 @@ The system is designed around a clean, automated pipeline from local development
 *   **Alternative Docs (ReDoc):** [https://iam-ch.duckdns.org/redoc](https://iam-ch.duckdns.org/redoc)
 
 ---
-![IAM-API-V2 Architecture Diagram](diagram.png)
+![IAM-API-V2 Flowchart Diagram](flowchart-diagram.png)
+![IAM-API-V2 Architecture Diagram](architecture-diagram.png)
 ---
 
 ## ✨ Key Features
