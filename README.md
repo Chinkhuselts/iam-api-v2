@@ -23,11 +23,6 @@ A stateless authentication and authorization service built with **FastAPI** and 
 
 The system is designed around a clean, automated pipeline from local development to cloud production, entirely secured via automated SSL/TLS certificates and deployed via declarative infrastructure.
 
-### 🌐 Live Production
-
-*   **API Documentation (Swagger UI):** [https://iam-ch.duckdns.org/docs](https://iam-ch.duckdns.org/docs)
-*   **Alternative Docs (ReDoc):** [https://iam-ch.duckdns.org/redoc](https://iam-ch.duckdns.org/redoc)
-
 ---
 ![IAM-API-V2 Flowchart Diagram](flowchart-diagram.png)
 ![IAM-API-V2 Architecture Diagram](architecture-diagram.png)
