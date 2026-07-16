@@ -25,7 +25,6 @@ The system is designed around a clean, automated pipeline from local development
 
 ---
 ![IAM-API-V2 Flowchart Diagram](flowchart-diagram.png)
-![IAM-API-V2 Architecture Diagram](architecture-diagram.png)
 ---
 
 ## ✨ Key Features
