@@ -6,13 +6,13 @@ from pydantic import BaseModel, EmailStr
 from passlib.context import CryptContext
 from database import init_db, get_db_connection
 import psycopg2
-
+import os
 app = FastAPI(title="IAM API V2")
 
 # --- Security Setup ---
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # Updated to 32+ characters to fix the PyJWT InsecureKeyLengthWarning!
-SECRET_KEY = "super_secret_devops_key_that_is_long_enough"
+SECRET_KEY = os.environ["JWT_SECRET_KEY"]
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
